@@ -1,0 +1,65 @@
+{
+  "info": {
+    "_postman_id": "6771fd24-5c0f-441a-85b0-9df7713c9aae",
+    "name": "ICEV",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "10880925",
+    "_collection_link": "https://go.postman.co/collection/10880925-6771fd24-5c0f-441a-85b0-9df7713c9aae?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "https://petstore.swagger.io/v2/pet/findByStatus",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code é 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"A resposta deve ser uma lista de pets\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.be.an('array');\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "pet",
+            "findByStatus"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "available"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
