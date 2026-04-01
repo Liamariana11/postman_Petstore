@@ -11,15 +11,20 @@ jobs:
     runs-on: ubuntu-latest 
 
     steps:
-      - name: Baixando os arquivos do repositório
+      - name: Checkout do código
         uses: actions/checkout@v4
-      - name: Instalando o Node.js
+
+      - name: Listar arquivos para conferir o nome (DEBUG)
+        run: ls -R  # <--- ESSE COMANDO VAI MOSTRAR O NOME REAL DO ARQUIVO
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Instalando o Newman (Executor do Postman)
+      - name: Instalar Newman
         run: npm install -g newman
 
-      - name: Rodando os Testes da Petstore
-        run: newman run ICEV.postman_collection.json --reporters cli
+      - name: Rodar Testes
+        # Use EXATAMENTE o nome que aparecer no log do comando "ls" acima
+        run: newman run NOME_QUE_APARECEU_NO_LS.json --reporters cli
